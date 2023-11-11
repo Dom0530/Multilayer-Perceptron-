@@ -1,4 +1,4 @@
-#include "MLP.h"
+#include "forward/MLP.h"
 
 int main() {
 
