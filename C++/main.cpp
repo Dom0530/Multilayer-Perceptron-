@@ -1,6 +1,18 @@
 #include "forward/MLP.h"
+#include "read_csv.h"
 
 int main() {
+
+    // Cargar el dataset desde un archivo CSV
+    string filename = "dataset_cancer.csv";
+    vector<vector<double>> dataset = loadCSV(filename);
+    vector<int> labels = loadLabels(filename);
+
+    // Dividir los datos en conjuntos de entrenamiento y prueba (70% - 30%)
+    vector<vector<double>> trainSetX, testSetX;
+    vector<int> trainSetY, testSetY;
+    double trainRatio = 0.7;
+    splitTrainTest(dataset, labels, trainSetX, trainSetY, testSetX, testSetY, trainRatio);
 
     MLP mlp(3, 6, 6, 1, relu);
     //mlp.show_weights();
